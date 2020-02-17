@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+
+class Project1 {
+   public static void main(String[] args) throws Exception {
+   
+      boolean loop = true; 
+      File file = new File("Project1_Data.txt");
+      FileWriter fw = new FileWriter(file, true);
+      fw.write("Project 1 Data");
+      fw.write("\n" + "Last, First: 6011234567, 3181234567");
+      
+      // do {   } (loop)
+      
+      String name = "Duke";
+      String number = "6628369594";
+      
+      
+      findName(name); 
+      
+      fw.close();
+   
+   }
+
+
+
+static void findName(String name) throws Exception {    // Use by setting a String to the name to be found and then use findName(**Whatever the string is referenced as**)
+   BufferedReader br = new BufferedReader(new FileReader("Project1_Data.txt"));
+   
+   String line = null; //Initiates an empty line to hold the string
+   
+   while ((line = br.readLine()) != null) {
+       String arr[] = line.split(" "); //Splits the line into an array of strings based on spaces. So Duke,James 662836****
+                                       //will change into an array with [1]. Duke,James and [2]. 662836****. 
+               for (int i = 0; i < arr.length; i++) {
+                   if (arr[i].trim().contains(name)) { //Delete any leading or trailing spaces if present and check if it contains the requested name
+                       System.out.println(line);  //Print out the line/lines that correspond to the name being searched for.
+   
+                     }
+               }
+         }
+       }                 
+}
